@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Pics - Guess the Word!</title>
+    <style>
+        /* Simple pink girly style */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #fff0f5;
+            color: #d14d8b;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background-color: #ffb6c1;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px dotted #d14d8b;
+        }
+        
+        .game-title {
+            font-size: 2.5rem;
+            margin: 0;
+            color: white;
+            text-shadow: 2px 2px 0px #d14d8b;
+        }
+        
+        .game-area {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 0 15px #ffb6c1;
+            text-align: center;
+        }
+        
+        .pictures {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .picture-box {
+            background-color: #fff0f5;
+            border: 2px dashed #ffb6c1;
+            border-radius: 15px;
+            padding: 10px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .picture-box img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .guess-area {
+            margin: 20px 0;
+        }
+        
+        input {
+            padding: 10px;
+            border: 2px solid #ffb6c1;
+            border-radius: 10px;
+            font-size: 1rem;
+            width: 200px;
+        }
+        
+        button {
+            background-color: #ffb6c1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        button:hover {
+            background-color: #d14d8b;
+        }
+        
+        .hint {
+            font-style: italic;
+            color: #d14d8b;
+            margin-top: 10px;
+        }
+        
+        .score {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffb6c1;
+            color: white;
+            margin-top: 30px;
+        }
+        
+        .hearts {
+            color: #d14d8b;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="game-title">Pink Pics Word Game <span class="hearts">♥</span></h1>
+        <p>Can you guess the word from four pictures?</p>
+    </div>
+    
+    <div class="game-area">
+        <h2>Today's Puzzle:</h2>
+        
+        <div class="pictures">
+            <div class="picture-box">
+                <img src="https://placekitten.com/200/200" alt="Picture 1">
+            </div>
+            <div class="picture-box">
+                <img src="https://placekitten.com/201/201" alt="Picture 2">
+            </div>
+            <div class="picture-box">
+                <img src="https://placekitten.com/199/199" alt="Picture 3">
+            </div>
+            <div class="picture-box">
+                <img src="https://placekitten.com/202/202" alt="Picture 4">
+            </div>
+        </div>
+        
+        <div class="guess-area">
+            <p>What word connects these pictures?</p>
+            <input type="text" id="user-guess" placeholder="Your guess...">
+            <button onclick="checkGuess()">Submit</button>
+            <p class="hint">Hint: It's something fluffy and cute!</p>
+        </div>
+        
+        <div class="score">
+            Score: <span id="score">0</span> points
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Made with <span class="hearts">♥♥♥</span> by [Your Name] for school</p>
+        <p>All pictures are examples - replace with your own!</p>
+    </div>
+    
+    <script>
+        // Simple game functions
+        let currentScore = 0;
+        const correctAnswer = "kitten"; // Change this for each puzzle
+        
+        function checkGuess() {
+            const userGuess = document.getElementById("user-guess").value.toLowerCase();
+            
+            if(userGuess === correctAnswer) {
+                alert("Yay! You got it right!");
+                currentScore += 10;
+                document.getElementById("score").textContent = currentScore;
+            } else {
+                alert("Oops! Try again!");
+            }
+        }
+    </script>
+</body>
+</html>
